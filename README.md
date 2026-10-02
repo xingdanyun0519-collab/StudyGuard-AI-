@@ -1,74 +1,79 @@
-# Random Time AI Checking Phone
+StudyGuard AI · Random Screen-Check Study Companion
+通过 ADB 随机截取手机屏幕，用 AI 判断你是在学习还是在摸鱼，并提醒你去学习。
+Randomly captures your phone screen via ADB, uses AI to tell whether you are studying or slacking off, and reminds you to get back to work.
 
-> An AI tool that uses ADB to randomly check your phone screen and remind you to study.
+📌 功能简介 | Features
+通过 ADB 随机截取手机屏幕截图。
+Randomly capture screenshots via ADB.
 
-## 📌 Functions
+使用 AI 判断你是在学习还是在玩游戏。
+Use AI to judge whether you are studying or playing games.
 
-- Randomly capture screenshots via ADB.
-- Use AI to judge whether you are studying or playing games.
-- Support HTTP chat.
+支持 HTTP 聊天。
+Support HTTP chat.
 
-## ❓ How It Works
+❓ 工作原理 | How It Works
+配置 ADB，通过 USB 或 Wi-Fi 调试连接手机。
+Set up ADB and connect your phone to your computer via USB or Wi-Fi debugging.
 
-1. Set up ADB and connect your phone to your computer via USB or Wi-Fi debugging.
-2. Fill in the config fields in `app.py` (OCR path and API key).
-3. Run `app.py`.
-4. Done. Now you can chat online and manage your screen time.
+在 app.py 中填写配置项（OCR 路径与 API Key）。
+Fill in the config fields in app.py (OCR path and API key).
 
-## 🛠 Requirements
+运行 app.py。
+Run app.py.
 
-| Dependency | Description |
-|------|------|
-| Python | 3.x |
-| ADB | Android Debug Bridge |
-| Offline OCR | Reads text from screenshots |
-| API key | Calls the AI model |
-| A computer and a target phone | Controls your phone |
+完成。现在你可以边聊天边管理自己的屏幕使用时间。
+Done. Now you can chat online and manage your screen time.
 
-## 🚀 Quick Start
-
-```bash
-# 1. Clone the repo
+🛠 环境要求 | Requirements
+依赖 Dependency	说明 Description
+Python	3.x
+ADB	Android Debug Bridge（安卓调试桥）
+离线 OCR Offline OCR	从截图中读取文字 / Reads text from screenshots
+API Key	调用 AI 模型 / Calls the AI model
+一台电脑 + 一台目标手机
+A computer and a target phone	用于控制手机 / Controls your phone
+🚀 快速开始 | Quick Start
+bash
+# 1. 克隆仓库 | Clone the repo
 git clone https://github.com/xingdanyun0519-collab/p.git
 cd p
 
-# 2. Set up virtual environment & install dependencies
+# 2. 创建虚拟环境并安装依赖 | Set up virtual environment & install dependencies
 python -m venv .venv
 .venv\Scripts\pip install -r requirements.txt
 
-# 3. Configure settings in app.py
-#    OCR_EXE_PATH -> path to your offline OCR tool (for example Umi-OCR)
-#    DEEPSEEK_API_KEY -> your API key
-```
+# 3. 在 app.py 中配置 | Configure settings in app.py
+#    OCR_EXE_PATH      -> 你的离线 OCR 工具路径（例如 Umi-OCR）
+#                         path to your offline OCR tool (for example Umi-OCR)
+#    DEEPSEEK_API_KEY  -> 你的 API 密钥 / your API key
+运行 | Run：
 
-### Run
-
-```bash
+bash
 .venv\Scripts\python app.py
-```
-
-## 📁 Project Structure
-
-```
-├── app.py              # Main program
-├── web/                # Web frontend
+📁 项目结构 | Project Structure
+text
+├── app.py              # 主程序 / Main program
+├── web/                # Web 前端 / Web frontend
 │   ├── index.html
 │   ├── app.js
 │   └── style.css
-├── requirements.txt    # Python dependencies
-├── chat.json           # Chat history
-├── history.json        # Screenshot history
-└── ui.xml              # UI config
-```
+├── requirements.txt    # Python 依赖 / Python dependencies
+├── chat.json           # 聊天记录 / Chat history
+├── history.json        # 截图历史 / Screenshot history
+└── ui.xml              # 界面配置 / UI config
+📝 注意事项 | Notes
+OCR 只提取屏幕上的文字，不会记录图像。
+OCR only captures text from the screen. It does not record images.
 
-## 📝 Notes
+更换 OCR 工具时，请修改 app.py 顶部的 OCR_COMMAND。
+When you change OCR tools, update OCR_COMMAND near the top of app.py.
 
-- OCR only captures text from the screen. It does not record images.
-- When you change OCR tools, update `OCR_COMMAND` near the top of `app.py`.
-- To force-close apps, edit `NON_STUDY_PACKAGES` in `app.py`.
-- This project sends OCR text and chat history to the AI API, so avoid putting private content into chats if you do not want it processed remotely.
+如需强制关闭应用，请编辑 app.py 中的 NON_STUDY_PACKAGES。
+To force-close apps, edit NON_STUDY_PACKAGES in app.py.
 
----
+本项目会将 OCR 文本与聊天记录发送至 AI API；如果不希望内容被远程处理，请勿在聊天中输入隐私信息。
+This project sends OCR text and chat history to the AI API, so avoid putting private content into chats if you do not want it processed remotely.
 
-*For personal study only*
-
+仅供个人学习使用。
+For personal study only.
